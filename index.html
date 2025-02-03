@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Перенаправление...</title>
+    <title>Redirecting...</title>
     <script>
         setTimeout(function() {
-            window.location.href = "tg://resolve?domain=kosice_rent";
-        }, 500); // Через 0.5 секунды перекинет в Telegram
+            var link = "tg://resolve?domain=kosice_rent";
+            var win = window.open(link, "_self"); // Открываем Telegram в этом же окне
+            
+            if (!win || win.closed || typeof win.closed === "undefined") {
+                window.location.href = "https://t.me/kosice_rent"; // Если не сработало, уводим на веб-версию
+            }
+        }, 100);
     </script>
 </head>
 <body>
-    <h2>Перенаправляем в Telegram...</h2>
-    <p>Если не работает, <a href="tg://resolve?domain=kosice_rent">нажми здесь</a>.</p>
+    <p>Перенаправление...</p>
 </body>
 </html>
