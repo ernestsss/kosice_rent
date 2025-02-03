@@ -3,29 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Перенаправление в Telegram</title>
     <script>
         function redirectToTelegram() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            
-            // Если Android → используем intent://
+
             if (/android/i.test(userAgent)) {
                 window.location.href = "intent://t.me/rent_kosice#Intent;package=org.telegram.messenger;scheme=https;end;";
-            } 
-            // Если iPhone → используем tg://
-            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "tg://resolve?domain=rent_kosice";
-            } 
-            // Если десктоп или другие браузеры → открываем обычный Telegram-линк
-            else {
+            } else {
                 window.location.href = "https://t.me/rent_kosice";
             }
+
+            setTimeout(function() {
+                document.getElementById("manual-instructions").style.display = "block";
+            }, 3000);
         }
 
         setTimeout(redirectToTelegram, 1000);
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #manual-instructions {
+            display: none;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007AFF;
+        }
+    </style>
 </head>
 <body>
-    <h1>Перенаправляем...</h1>
+    <h1>Перенаправляем в Telegram...</h1>
+    <p>Если этого не произошло автоматически, следуйте инструкции ниже.</p>
+
+    <div id="manual-instructions">
+        <p>🔹 <b>Если вы открыли ссылку в TikTok:</b>  
+        Нажмите <span class="highlight">три точки</span> в правом верхнем углу, выберите <span class="highlight">«Открыть в браузере»</span>, и вас сразу перенаправит.</p>
+
+        <p>🔹 <b>Если ссылка не открывается:</b>  
+        Введите <span class="highlight">kosice_rent</span> в поиске Telegram и перейдите в наш канал вручную.</p>
+
+        <p>🔹 <b>Прямая ссылка:</b>  
+        <a href="https://t.me/rent_kosice">t.me/rent_kosice</a></p>
+    </div>
 </body>
 </html>
