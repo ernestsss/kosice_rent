@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        setTimeout(function() {
-            var link = "tg://resolve?domain=kosice_rent";
-            var a = document.createElement("a");
-            a.href = link;
-            a.target = "_blank";
-            a.rel = "noopener noreferrer";
-            document.body.appendChild(a);
-            a.click();
-        }, 100);
+        function redirectToTelegram() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Если Android → используем intent://
+            if (/android/i.test(userAgent)) {
+                window.location.href = "intent://t.me/rent_kosice#Intent;package=org.telegram.messenger;scheme=https;end;";
+            } 
+            // Если iPhone → используем tg://
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "tg://resolve?domain=rent_kosice";
+            } 
+            // Если десктоп или другие браузеры → открываем обычный Telegram-линк
+            else {
+                window.location.href = "https://t.me/rent_kosice";
+            }
+        }
+
+        setTimeout(redirectToTelegram, 1000);
     </script>
 </head>
 <body>
-    <p>Перенаправление...</p>
+    <h1>Перенаправляем...</h1>
 </body>
 </html>
