@@ -15,10 +15,6 @@
             } else {
                 window.location.href = "https://t.me/rent_kosice";
             }
-
-            setTimeout(function() {
-                document.getElementById("manual-instructions").style.display = "block";
-            }, 3000);
         }
 
         setTimeout(redirectToTelegram, 1000);
@@ -28,12 +24,6 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
-        }
-        #manual-instructions {
-            display: none;
-            margin-top: 20px;
-            font-size: 16px;
-            color: #333;
         }
         .highlight {
             font-weight: bold;
@@ -45,7 +35,7 @@
     <h1>Перенаправляем в Telegram...</h1>
     <p>Если этого не произошло автоматически, следуйте инструкции ниже.</p>
 
-    <div id="manual-instructions">
+    <div>
         <p>🔹 <b>Если вы открыли ссылку в TikTok:</b>  
         Нажмите <span class="highlight">три точки</span> в правом верхнем углу, выберите <span class="highlight">«Открыть в браузере»</span>, и вас сразу перенаправит.</p>
 
